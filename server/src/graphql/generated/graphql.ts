@@ -11,12 +11,23 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  login: Scalars['String'];
+  _empty?: Maybe<Scalars['String']>;
+  login: AuthenticateResponse;
+  test: Scalars['String'];
+  getOrganisations: GetOrganisationsResult;
+};
+
+
+export type QueryLoginArgs = {
+  email: Scalars['String'];
+  password: Scalars['String'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  register: Scalars['String'];
+  _empty?: Maybe<Scalars['String']>;
+  register: AuthenticateResponse;
+  createOrganisation: OrganisationCreationResult;
 };
 
 
@@ -25,7 +36,22 @@ export type MutationRegisterArgs = {
   password: Scalars['String'];
 };
 
+
+export type MutationCreateOrganisationArgs = {
+  name: Scalars['String'];
+};
+
 export type AuthenticateResponse = {
   __typename?: 'AuthenticateResponse';
   token: Scalars['String'];
+};
+
+export type OrganisationCreationResult = {
+  __typename?: 'OrganisationCreationResult';
+  id: Scalars['String'];
+};
+
+export type GetOrganisationsResult = {
+  __typename?: 'GetOrganisationsResult';
+  organisations?: Maybe<Array<Scalars['String']>>;
 };

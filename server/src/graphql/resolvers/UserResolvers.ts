@@ -1,14 +1,21 @@
 import { IResolvers } from 'graphql-tools';
-import {AuthenticateResponse, MutationRegisterArgs} from "../generated/graphql";
-import {createUser, userExists} from "../../database/user/Helpers";
+import {AuthenticateResponse, MutationRegisterArgs, QueryLoginArgs} from "../generated/graphql";
+import {checkUser, createUser, userExists} from "../../database/user/Helpers";
 import UserExistsError from "../../errors/UserExistsError";
 import UUIDGenerator from "../../utils/UUIDGenerator";
 import bcrypt from 'bcrypt';
 
 export const UserResolvers: IResolvers = {
   Query: {
-    login(_: void, args: unknown): string {
-      return "token"
+    async login(_: void, args: QueryLoginArgs): Promise<AuthenticateResponse> {
+      const { email, password  } = args;
+      const user = await checkUser(email, password);
+      return {
+        token: user.token
+      }
+    },
+    test(_: void, args: unknown): string {
+      return "hello";
     }
   },
   Mutation: {

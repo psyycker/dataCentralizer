@@ -1,0 +1,17 @@
+
+
+extend type Query {
+  getOrganisations: GetOrganisationsResult!
+}
+
+extend type Mutation {
+  createOrganisation(name: String!): OrganisationCreationResult!
+}
+
+type OrganisationCreationResult {
+  id: String!
+}
+
+type GetOrganisationsResult {
+  organisations: [String!]
+}

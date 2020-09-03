@@ -1,8 +1,9 @@
-type Query {
-  login: String!
+extend type Query {
+  login(email: String!, password: String!): AuthenticateResponse!,
+  test: String!
 }
 
-type Mutation {
+extend type Mutation {
   register(email: String!, password: String!): AuthenticateResponse!
 }
 

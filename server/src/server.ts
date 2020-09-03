@@ -7,6 +7,8 @@ import cors from 'cors';
 import schema from './schema';
 import StartDB from "./database/Database";
 import morgan from "morgan";
+import {IUserSchema} from "./database/user";
+import {getUserWithToken} from "./database/user/Helpers";
 
 const PORT = 4000
 
@@ -15,6 +17,15 @@ StartDB(() => {
   const server = new ApolloServer({
     schema,
     validationRules: [depthLimit(7)],
+    context: async ({ req }) => {
+      try {
+        const token = req.headers.authorization || '';
+        if (token) {
+          const user: IUserSchema = await getUserWithToken(token);
+          return { user }
+        }
+      } catch (e) {}
+    }
   });
   app.use('*', cors());
   app.use(morgan("tiny"));
