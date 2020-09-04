@@ -15,6 +15,10 @@ export type Query = {
   login: AuthenticateResponse;
   test: Scalars['String'];
   getOrganisations: GetOrganisationsResult;
+  getProjectsForUser: GetProjectsResponse;
+  getProjects: GetProjectsResponse;
+  getProject: Project;
+  permissions: ProjectPermissions;
 };
 
 
@@ -23,11 +27,27 @@ export type QueryLoginArgs = {
   password: Scalars['String'];
 };
 
+
+export type QueryGetProjectsArgs = {
+  organisationId: Scalars['ID'];
+};
+
+
+export type QueryGetProjectArgs = {
+  project: Scalars['ID'];
+};
+
+
+export type QueryPermissionsArgs = {
+  projectId: Scalars['ID'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   _empty?: Maybe<Scalars['String']>;
   register: AuthenticateResponse;
   createOrganisation: OrganisationCreationResult;
+  createProject: Project;
 };
 
 
@@ -39,6 +59,12 @@ export type MutationRegisterArgs = {
 
 export type MutationCreateOrganisationArgs = {
   name: Scalars['String'];
+};
+
+
+export type MutationCreateProjectArgs = {
+  name: Scalars['String'];
+  organisation: Scalars['ID'];
 };
 
 export type AuthenticateResponse = {
@@ -54,4 +80,29 @@ export type OrganisationCreationResult = {
 export type GetOrganisationsResult = {
   __typename?: 'GetOrganisationsResult';
   organisations?: Maybe<Array<Scalars['String']>>;
+};
+
+export type GetProjectsResponse = {
+  __typename?: 'GetProjectsResponse';
+  projects?: Maybe<Array<Project>>;
+};
+
+export type Project = {
+  __typename?: 'Project';
+  id: Scalars['ID'];
+  owner: Scalars['ID'];
+  permissions: ProjectPermissions;
+  name: Scalars['String'];
+};
+
+export type ProjectPermissions = {
+  __typename?: 'ProjectPermissions';
+  projectId: Scalars['ID'];
+  userId: Scalars['ID'];
+  canEdit: Scalars['Boolean'];
+  canRemoveFiles: Scalars['Boolean'];
+  canMoveFiles: Scalars['Boolean'];
+  canCreateFiles: Scalars['Boolean'];
+  canAddUsersToProject: Scalars['Boolean'];
+  canRemoveUsersToProject: Scalars['Boolean'];
 };

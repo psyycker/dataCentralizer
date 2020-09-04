@@ -1,14 +1,14 @@
 import mongoose, {Schema, Document, Model} from 'mongoose';
 
 const ProjectSchema: Schema = new Schema({
-  organisation: { type: mongoose.Schema.Types.ObjectId, required: true, unique: false },
+  organisation: { type: mongoose.Types.ObjectId, required: true, unique: false },
   name: { type: String, required: true }
 })
 
 
 
 export interface IProjectSchema extends Document {
-  organisation: mongoose.Schema.Types.ObjectId;
+  organisation: mongoose.Types.ObjectId;
   name: string
 }
 

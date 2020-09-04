@@ -1,7 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 import {GetOrganisationsResult, MutationCreateOrganisationArgs, OrganisationCreationResult} from "../generated/graphql";
 import {createOrganisation, getOrganisations} from "../../services/OrganisationService";
-import {IUserSchema} from "../../database/user";
+import {IUserSchema} from "../../database/schemas/user";
 
 export const OrganisationResolvers: IResolvers = {
   Query: {

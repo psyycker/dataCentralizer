@@ -1,7 +1,7 @@
 import Organisation from './index'
-import OrganisationRemovalError from "../../errors/organisation/OrganisationRemovalError";
+import OrganisationRemovalError from "../../../errors/organisation/OrganisationRemovalError";
 import {IUserSchema} from "../user";
-import GenericError from "../../errors/GenericError";
+import GenericError from "../../../errors/GenericError";
 
 export function removeOrganisation(id: string): Promise<void> {
   return new Promise<void>((resolve, rejects) => {

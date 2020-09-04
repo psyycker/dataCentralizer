@@ -1,0 +1,34 @@
+
+
+extend type Query {
+  getProjectsForUser: GetProjectsResponse!
+  getProjects(organisationId: ID!): GetProjectsResponse!
+  getProject(project: ID!): Project!
+  permissions(projectId: ID!): ProjectPermissions!
+}
+
+extend type Mutation {
+  createProject(name: String!, organisation: ID!): Project!
+}
+
+type GetProjectsResponse {
+  projects: [Project!]
+}
+
+type Project {
+  id: ID!,
+  owner: ID!
+  permissions: ProjectPermissions!
+  name: String!
+}
+
+type ProjectPermissions {
+  projectId: ID!,
+  userId: ID!,
+  canEdit: Boolean!,
+  canRemoveFiles: Boolean!,
+  canMoveFiles: Boolean!,
+  canCreateFiles: Boolean!,
+  canAddUsersToProject: Boolean!,
+  canRemoveUsersToProject: Boolean!
+}

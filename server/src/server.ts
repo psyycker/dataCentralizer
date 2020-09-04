@@ -7,8 +7,8 @@ import cors from 'cors';
 import schema from './schema';
 import StartDB from "./database/Database";
 import morgan from "morgan";
-import {IUserSchema} from "./database/user";
-import {getUserWithToken} from "./database/user/Helpers";
+import {IUserSchema} from "./database/schemas/user";
+import {getUserWithToken} from "./database/schemas/user/Helpers";
 
 const PORT = 4000
 

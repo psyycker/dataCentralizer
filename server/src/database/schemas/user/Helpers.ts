@@ -1,9 +1,9 @@
 import User, {IUserSchema} from "./index"
-import GenericError from "../../errors/GenericError";
-import {createToken} from "../../utils/token";
-import UserNotFoundError from "../../errors/UserNotFoundError";
+import GenericError from "../../../errors/GenericError";
+import {createToken} from "../../../utils/token";
+import UserNotFoundError from "../../../errors/UserNotFoundError";
 import bcrypt from 'bcrypt';
-import WrongCredentialsError from "../../errors/WrongCredentialsError";
+import WrongCredentialsError from "../../../errors/WrongCredentialsError";
 
 export function userExists(email: string): Promise<boolean> {
   return new Promise<boolean>((resolve, rejects) => {

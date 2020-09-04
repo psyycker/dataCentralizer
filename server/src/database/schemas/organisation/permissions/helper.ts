@@ -1,6 +1,6 @@
 import OrganisationPermissions, {IOrganisationPermissionsSchema} from './index';
 import {IUserSchema} from "../../user";
-import OrganisationPermissionsFetchingError from "../../../errors/organisation/OrganisationPermissionsFetchingError";
+import OrganisationPermissionsFetchingError from "../../../../errors/organisation/OrganisationPermissionsFetchingError";
 
 export function getUserPermissions(user: IUserSchema): Promise<IOrganisationPermissionsSchema[]> {
   return new Promise<IOrganisationPermissionsSchema[]>((resolve, rejects) => {

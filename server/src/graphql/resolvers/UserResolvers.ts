@@ -1,6 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 import {AuthenticateResponse, MutationRegisterArgs, QueryLoginArgs} from "../generated/graphql";
-import {checkUser, createUser, userExists} from "../../database/user/Helpers";
+import {checkUser, createUser, userExists} from "../../database/schemas/user/Helpers";
 import UserExistsError from "../../errors/UserExistsError";
 import UUIDGenerator from "../../utils/UUIDGenerator";
 import bcrypt from 'bcrypt';

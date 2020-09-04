@@ -1,12 +1,12 @@
-import {IUserSchema} from "../database/user";
+import {IUserSchema} from "../database/schemas/user";
 import PermissionDenied from "../errors/PermissionDenied";
-import Organisation from '../database/organisation';
-import OrganisationPermissions from '../database/organisation/permissions'
+import Organisation from '../database/schemas/organisation';
+import OrganisationPermissions from '../database/schemas/organisation/permissions'
 import OrganisationCreationError from "../errors/organisation/OrganisationCreationError";
 import OrganisationPermissionsCreationError from "../errors/organisation/OrganisationPermissionsCreationError";
-import {organisationNameExistsForUser, removeOrganisation} from "../database/organisation/helper";
+import {organisationNameExistsForUser, removeOrganisation} from "../database/schemas/organisation/helper";
 import OrganisationNameExistsForUser from "../errors/organisation/OrganisationNameExistsForUser";
-import {getUserPermissions} from "../database/organisation/permissions/helper";
+import {getUserPermissions} from "../database/schemas/organisation/permissions/helper";
 
 function canCreateOrganisation(user: IUserSchema): void {
   if (user == null) {

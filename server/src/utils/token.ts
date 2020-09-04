@@ -1,4 +1,4 @@
-import {IUserSchema} from "../database/user";
+import {IUserSchema} from "../database/schemas/user";
 import UUIDGenerator from "./UUIDGenerator";
 import jwt from 'jsonwebtoken';
 import {TokenPayload} from "../types/Token";
