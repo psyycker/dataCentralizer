@@ -9,6 +9,7 @@ import StartDB from './database/Database'
 import morgan from 'morgan'
 import { IUserSchema } from './database/schemas/user'
 import { getUserWithToken } from './database/schemas/user/helpers'
+import ConstantJSService from '../../common/language-services/javascript/constants/ConstantJSService'
 
 const PORT = 4000
 
