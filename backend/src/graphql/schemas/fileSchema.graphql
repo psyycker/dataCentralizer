@@ -1,0 +1,16 @@
+extend type Query {
+  getAll(project: ID!): [File!]
+}
+
+extend type Mutation {
+  createFile(type: String!, name: String!): File!
+}
+
+type File {
+  id: ID!
+  type: String!
+  parent: ID
+  project: ID!
+  content: JSON
+}
+
